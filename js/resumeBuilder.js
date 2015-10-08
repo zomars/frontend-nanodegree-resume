@@ -27,13 +27,74 @@ var bio = {
     "skills": skills
 };
 
-var work = {};
-work.position = "Web Developer";
-work.employer = "ANCLA Studio";
-work.years = "2 years";
-work.city = "Culiacán";
+var bio = {
+    "name": "Omar",
+    "role": "Front-End Developer",
+    "welcomeMessage": "Hi, welcome to my online resume",
+    "contacts": {
+        "mobile": "(667) 2350818",
+        "email": "omar@anclastudio.com",
+        "twitter": "@zomars",
+        "github": "zomars",
+        "location": "Culiacán"
+    },
+    "picture": "images/fry.jpg",
+    "skills": skills
+}
 
-var education = {};
+var work = {
+    "jobs": [
+        {
+            "employer": "ANCLA Studio",
+            "title": "Front-End Developer",
+            "location": "Culiacán",
+            "dates": "November 2013 - Today",
+            "description": "Graphic Design and Animation"
+        }
+    ]
+}
+
+var projects = {
+    "projects": [
+        {
+            "title": "Caritas Diocesana",
+            "dates": "September 2015",
+            "description": "Website Development",
+            "images": [
+                {
+                    "01": "images/project-01.jpg"
+                }
+            ]
+        }
+    ]
+}
+
+var education = {
+    "schools": [
+        {
+            "name": "Universidad TecMilenio",
+            "location": "Culiacán",
+            "degree": "Graphic Design and Animation",
+            "dates": 2012,
+            "url": "http://tecmilenio.mx/"
+        },
+        {
+            "name": "Universidad TecMilenio",
+            "location": "Culiacán",
+            "degree": "High School",
+            "dates": 2008,
+            "url": "http://tecmilenio.mx/"
+        }
+    ],
+    "onlineCourses": [
+        {
+            "title": "Front-End Nanodegree",
+            "school": "Udacity",
+            "dates": "September 2015 - Today",
+            "url": "https://www.udacity.com/"
+        }
+    ]
+}
 
 if (bio.skills.length > 0) {
     $("#header").append(HTMLskillsStart);
@@ -83,4 +144,17 @@ function inName(){
     return nameArray[0] + " " + nameArray[1];
 }
 
+
+// if (work.jobs.length > 0) {
+
+//     var formattedJob = "";
+
+//     for (job in work.jobs) {
+
+//         formattedJob = HTMLworkEmployer.replace("%data%", work.jobs[job]);
+//         $("#workExperience").append(formattedJob);
+
+//     }
+
+// }
 
