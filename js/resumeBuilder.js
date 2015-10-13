@@ -2,7 +2,7 @@ var bio = {
     "name": "Omar López",
     "role": "Front-End Developer",
     "contacts": {
-        "mobile": "(667) 2350818",
+        "mobile": "(667) 1654987",
         "email": "omar@anclastudio.com",
         "twitter": "@zomars",
         "github": "zomars",
@@ -39,9 +39,23 @@ var projects = {
             "dates": "September 2015",
             "description": "Website Development",
             "images": [
-                {
-                    "01": "images/project-01.jpg"
-                }
+                "images/project_image_01.jpg"
+            ]
+        },
+        {
+            "title": "Los Arcos Restaurant",
+            "dates": "September 2015",
+            "description": "Website Development",
+            "images": [
+                "images/project_image_02.jpg"
+            ]
+        },
+        {
+            "title": "Sinhue Manjarrez",
+            "dates": "August 2015",
+            "description": "Website Development",
+            "images": [
+                "images/project_image_03.jpg"
             ]
         }
     ]
@@ -54,14 +68,16 @@ var education = {
             "location": "Culiacán",
             "degree": "Graphic Design and Animation",
             "dates": 2012,
-            "url": "http://tecmilenio.mx/"
+            "url": "http://tecmilenio.mx/",
+            "major": "Design"
         },
         {
             "name": "Universidad TecMilenio",
             "location": "Culiacán",
             "degree": "High School",
             "dates": 2008,
-            "url": "http://tecmilenio.mx/"
+            "url": "http://tecmilenio.mx/",
+            "major": "Design"
         }
     ],
     "onlineCourses": [
@@ -78,13 +94,15 @@ bio.display = function() {
 
     var formattedName = HTMLheaderName.replace("%data%", bio.name),
     formattedRole = HTMLheaderRole.replace("%data%",bio.role),
-    formattedImage = HTMLbioPic.replace("%data%",bio.image),
+    formattedImage = HTMLbioPic.replace("%data%",bio.picture),
     formattedMessage = HTMLwelcomeMsg.replace("%data%",bio.welcome),
     formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobile),
     formattedEmail = HTMLemail.replace("%data%",bio.contacts.email),
     formattedTwitter = HTMLtwitter.replace("%data%",bio.contacts.twitter),
     formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
-    $("#header").append(formattedName,formattedRole,formattedImage,formattedMessage,HTMLskillsStart);
+    $("#header").prepend(formattedName,formattedRole);
+    $("#topContacts").append(formattedMobile,formattedEmail,formattedTwitter,formattedGithub);
+    $("#header").append(formattedImage,formattedMessage,HTMLskillsStart);
     $("#footerContacts").append(formattedMobile,formattedEmail,formattedTwitter,formattedGithub);
 
     for(skill in bio.skills) {
@@ -119,8 +137,10 @@ projects.display = function() {
         formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
         $(".project-entry:last").append(formattedTitle,formattedDates,formattedDescription);
 
-        for (picture in projects.projects[project].images) {
-            var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[picture]);
+        var imageArray = projects.projects[project].images;
+
+        for (picture in imageArray) {
+            var formattedImage = HTMLprojectImage.replace("%data%", imageArray[picture]);
             $(".project-entry:last").append(formattedImage);
         }
 
@@ -140,13 +160,31 @@ education.display = function() {
         $(".education-entry:last").append(formattedName+formattedDegree,formattedDates,formattedLocation,formattedMajor);
 
     }
+
+    if (education.onlineCourses) {
+
+        $("#education").append(HTMLonlineClasses);
+
+        for (course in education.onlineCourses) {
+
+            $("#education").append(HTMLschoolStart);
+
+            var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title),
+            formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school),
+            formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates),
+            formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
+            $(".education-entry:last").append(formattedTitle+formattedSchool,formattedDates,formattedURL);
+
+        }
+    }
+
 }
 
 
 
 function inName(){
 
-    nameArray = name.trim().split(" ");
+    nameArray = bio.name.trim().split(" ");
     console.log(nameArray);
 
     nameArray[1] = nameArray[1].toUpperCase();
