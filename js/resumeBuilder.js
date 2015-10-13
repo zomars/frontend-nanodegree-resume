@@ -1,7 +1,7 @@
 var bio = {
     "name": "Omar López",
     "role": "Front-End Developer",
-    "contact": {
+    "contacts": {
         "mobile": "(667) 2350818",
         "email": "omar@anclastudio.com",
         "twitter": "@zomars",
@@ -20,7 +20,14 @@ var work = {
             "title": "Front-End Developer",
             "location": "Culiacán",
             "dates": "November 2013 - Today",
-            "description": "Graphic Design and Animation"
+            "description": "UX Consulting and Front-End Development"
+        },
+        {
+            "employer": "Studio Moza",
+            "title": "Web Developer",
+            "location": "Palm Springs",
+            "dates": "February 2013 - November 2013",
+            "description": "Wordpress Development"
         }
     ]
 }
@@ -73,10 +80,10 @@ bio.display = function() {
     formattedRole = HTMLheaderRole.replace("%data%",bio.role),
     formattedImage = HTMLbioPic.replace("%data%",bio.image),
     formattedMessage = HTMLwelcomeMsg.replace("%data%",bio.welcome),
-    formattedMobile = HTMLmobile.replace("%data%",bio.contact.mobile),
-    formattedEmail = HTMLemail.replace("%data%",bio.contact.email),
-    formattedTwitter = HTMLtwitter.replace("%data%",bio.contact.twitter),
-    formattedGithub = HTMLgithub.replace("%data%",bio.contact.github);
+    formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobile),
+    formattedEmail = HTMLemail.replace("%data%",bio.contacts.email),
+    formattedTwitter = HTMLtwitter.replace("%data%",bio.contacts.twitter),
+    formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
     $("#header").append(formattedName,formattedRole,formattedImage,formattedMessage,HTMLskillsStart);
     $("#footerContacts").append(formattedMobile,formattedEmail,formattedTwitter,formattedGithub);
 
